@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İlber Ortaylı: Bir Ömür Tarih</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- GENEL AYARLAR --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        
+        body {
+            background-color: #050505;
+            color: #d1d1d1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+        /* --- 1. GİRİŞ: ATATÜRKÜN GÖZLERİ --- */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle, #1a1a1a 0%, #050505 100%);
+            position: relative;
+            padding: 20px;
+        }
+
+        .ataturk-eyes {
+            width: 100%;
+            max-width: 800px;
+            filter: contrast(110%); /* Sadece hafif netlik, siyahlık yok */
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.9);
+            border: none; /* Mavi çizgi kesin olarak kaldırıldı */
+        }
+
+        .main-quote {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(1.3rem, 4vw, 2.5rem);
+            color: #fff;
+            max-width: 900px;
+            font-style: italic;
+        }
+
+        /* Şeffaf Aşağı Kaydır Oku */
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            cursor: pointer;
+            opacity: 0.6;
+            animation: bounce 2s infinite;
+            transition: 0.3s;
+        }
+        .scroll-down:hover { opacity: 1; }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-15px);}
+            60% {transform: translateY(-7px);}
+        }
+
+        /* --- BÖLÜM BAŞLIKLARI --- */
+        section { padding: 100px 0; border-bottom: 1px solid #111; }
+        
+        .gold-header {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 80px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        /* --- 2. BİYOGRAFİ BÖLÜMÜ --- */
+        .bio-block {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .bio-image-frame img {
+            width: 100%;
+            border: 1px solid #333;
+            filter: none; /* Siyah-beyaz efekti kaldırıldı */
+            transition: 0.5s;
+        }
+
+        .bio-content h3 { 
+            font-family: 'Playfair Display', serif; 
+            color: #fff; 
+            font-size: 2.2rem; 
+            margin-bottom: 20px; 
+        }
+
+        /* --- 3. SÖZLER VE RESİMLER (KARTLAR) --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .soz-kart {
+            background: #0f0f0f;
+            border: 1px solid #222;
+            overflow: hidden;
+            transition: 0.4s ease;
+        }
+
+        .soz-kart:hover { 
+            border-color: #d4af37; 
+            transform: translateY(-10px); 
+        }
+
+        .soz-kart img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            filter: none; /* Karartma/Gri efekt kaldırıldı */
+        }
+
+        .soz-text {
+            padding: 30px;
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: #eee;
+        }
+
+        /* --- 4. FOOTER --- */
+        footer {
+            background: #000;
+            padding: 100px 20px;
+            text-align: center;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .memorial-text { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.2rem; 
+            color: #fff; 
+            margin-bottom: 20px; 
+        }
+
+        .copyright { 
+            font-size: 0.8rem; 
+            color: #444; 
+            margin-top: 60px; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+        }
+
+        /* MOBİL UYUM */
+        @media (max-width: 850px) {
+            .bio-block { grid-template-columns: 1fr; text-align: center; }
+            .gold-header { font-size: 2.2rem; }
+            .ataturk-eyes { width: 95%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="ataturk_goz.jpg" alt="Atatürk" class="ataturk-eyes">
+        <h1 class="main-quote">“Tarihini bilmeyen bir millet, yok olmaya mahkûmdur.”</h1>
+        
+        <div class="scroll-down" onclick="document.getElementById('biyografi-bolumu').scrollIntoView();">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+            </svg>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section id="biyografi-bolumu">
+            <h2 class="gold-header">Hocaların Hocası</h2>
+            <div class="bio-block">
+                <div class="bio-image-frame">
+                    <img src="ilber_hoca_1.jpg" alt="İlber Ortaylı">
+                </div>
+                <div class="bio-content">
+                    <h3>Bir Akademik Deha</h3>
+                    <p> İlber Ortaylı, Türkiye’nin en tanınmış tarihçilerinden biridir. Özellikle Osmanlı tarihi ve diplomasi tarihi üzerine çalışmalarıyla bilinir.
+
+Kısaca hayatı:
+1947’de Avusturya’nın Bregenz şehrinde doğdu. Ailesi Kırım Tatarıdır. Çocukluğu Türkiye’de geçti. Eğitim hayatını Ankara ve İstanbul’da sürdürdü.
+
+Akademik kariyeri:
+Ankara Üniversitesi Siyasal Bilgiler Fakültesi’nden mezun oldu. Daha sonra Chicago Üniversitesi ve Viyana Üniversitesi gibi önemli kurumlarda eğitim aldı. Uzun yıllar Galatasaray Üniversitesi ve İstanbul Üniversitesi’nde ders verdi.
+Ayrıca bir dönem Topkapı Sarayı Müzesi müdürlüğü yaptı.
+
+Kitapları (bazıları):
+
+İmparatorluğun En Uzun Yüzyılı
+Osmanlı’yı Yeniden Keşfetmek
+Türklerin Tarihi
+Cumhuriyet’in Kuruluşu
+Gazi Mustafa Kemal Atatürk.
+
+Bildiği diller:
+İlber Ortaylı birçok dil bilir ve bu yönüyle de dikkat çeker:
+
+"Türkçe (ana dili)
+Rusça
+Almanca
+İngilizce
+Fransızca
+İtalyanca
+Latince (akademik düzeyde)"
+
+Kısa ama net söylemek gerekirse: İlber Ortaylı, hem akademik derinliği hem de geniş dil bilgisi sayesinde Türkiye’de tarih alanında en etkili isimlerden biri olarak kabul edilir.</p>
+                    <br>
+                    <p>Onun tarih anlatımı sadece savaşlardan ibaret değildir; bir milletin ruhunu, sanatını ve dilini de kapsar.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="gold-header">Bilgelik Notları</h2>
+            <div class="gallery-grid">
+                
+                <div class="soz-kart">
+                    <img src="hoca_resim1.jpg" alt="İlber Ortaylı 1">
+                    <div class="soz-text">"Okumayan, araştırmayan bir millet, köle olmaya mahkûmdur. Cahillik bir tercih değildir, bir felakettir."</div>
+                </div>
+
+                <div class="soz-kart">
+                    <img src="hoca_resim2.jpg" alt="İlber Ortaylı 2">
+                    <div class="soz-text">"Arşiv bilmeyen, belge okumayan adamın yazdığı tarih masaldır. Tarih, ispat ve belge sanatıdır."</div>
+                </div>
+
+                <div class="soz-kart">
+                    <img src="hoca_resim3.jpg" alt="İlber Ortaylı 3">
+                    <div class="soz-text">"Dil bilmeden tarih yapılmaz. Kendi dilini bilmeyen, başkasının tarihini ancak masal niyetine dinler."</div>
+                </div>
+
+                <div class="soz-kart">
+                    <img src="hoca_resim4.jpg" alt="İlber Ortaylı 4">
+                    <div class="soz-text">"Türkiye'nin geleceği, gençlerin tarih bilincine bağlıdır. Geçmişini unutan, geleceğini kuramaz."</div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <h2 class="memorial-text">Prof. Dr. İlber Ortaylı'nın anısına yapılmıştır.</h2>
+            <p style="color: #666;">Geçmişin derinliklerinden geleceğin ışığına...</p>
+            <p class="copyright">Erdem tarafından geliştirildi</p>
+        </div>
+    </footer>
+
+</body>
+</html>
